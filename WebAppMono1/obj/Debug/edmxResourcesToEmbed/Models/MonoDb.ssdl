@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MonoDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BlogCategory">
+    <Key>
+      <PropertyRef Name="BlogCategoryId" />
+    </Key>
+    <Property Name="BlogCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BlogCategoryName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="BlogPost">
+    <Key>
+      <PropertyRef Name="BlogPostId" />
+    </Key>
+    <Property Name="BlogPostId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BlogPostTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="BlogPostBody" Type="nvarchar(max)" />
+    <Property Name="BlogPostPhotoId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClientFeedback">
+    <Key>
+      <PropertyRef Name="FeedbackId" />
+    </Key>
+    <Property Name="FeedbackId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FeedbackSenderName" Type="nvarchar" MaxLength="50" />
+    <Property Name="FeedbackText" Type="nvarchar(max)" />
+    <Property Name="FeedbackSenderRole" Type="nvarchar" MaxLength="50" />
+    <Property Name="FeedbackSenderPhotoId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="CommentId" />
+    </Key>
+    <Property Name="CommentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CommentSenderName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CommentBody" Type="nvarchar(max)" />
+    <Property Name="CommentDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Photo">
+    <Key>
+      <PropertyRef Name="PhotoId" />
+    </Key>
+    <Property Name="PhotoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PhotoName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhotoSize" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="PhotoPath" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Position">
+    <Key>
+      <PropertyRef Name="PositionId" />
+    </Key>
+    <Property Name="PositionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PositionName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TeamMember">
+    <Key>
+      <PropertyRef Name="TeamMemberId" />
+    </Key>
+    <Property Name="TeamMemberId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TeamMemberName" Type="nvarchar" MaxLength="50" />
+    <Property Name="TeamMemberPhotoId" Type="int" Nullable="false" />
+    <Property Name="TeamMemberPositionId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__BlogPost__BlogPo__3B75D760">
+    <End Role="Photo" Type="Self.Photo" Multiplicity="1" />
+    <End Role="BlogPost" Type="Self.BlogPost" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Photo">
+        <PropertyRef Name="PhotoId" />
+      </Principal>
+      <Dependent Role="BlogPost">
+        <PropertyRef Name="BlogPostPhotoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ClientFee__Feedb__45F365D3">
+    <End Role="Photo" Type="Self.Photo" Multiplicity="1" />
+    <End Role="ClientFeedback" Type="Self.ClientFeedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Photo">
+        <PropertyRef Name="PhotoId" />
+      </Principal>
+      <Dependent Role="ClientFeedback">
+        <PropertyRef Name="FeedbackSenderPhotoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TeamMembe__TeamM__403A8C7D">
+    <End Role="Photo" Type="Self.Photo" Multiplicity="1" />
+    <End Role="TeamMember" Type="Self.TeamMember" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Photo">
+        <PropertyRef Name="PhotoId" />
+      </Principal>
+      <Dependent Role="TeamMember">
+        <PropertyRef Name="TeamMemberPhotoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TeamMembe__TeamM__412EB0B6">
+    <End Role="Position" Type="Self.Position" Multiplicity="1" />
+    <End Role="TeamMember" Type="Self.TeamMember" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Position">
+        <PropertyRef Name="PositionId" />
+      </Principal>
+      <Dependent Role="TeamMember">
+        <PropertyRef Name="TeamMemberPositionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MonoDbModelStoreContainer">
+    <EntitySet Name="BlogCategory" EntityType="Self.BlogCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BlogPost" EntityType="Self.BlogPost" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClientFeedback" EntityType="Self.ClientFeedback" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Photo" EntityType="Self.Photo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TeamMember" EntityType="Self.TeamMember" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__BlogPost__BlogPo__3B75D760" Association="Self.FK__BlogPost__BlogPo__3B75D760">
+      <End Role="Photo" EntitySet="Photo" />
+      <End Role="BlogPost" EntitySet="BlogPost" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ClientFee__Feedb__45F365D3" Association="Self.FK__ClientFee__Feedb__45F365D3">
+      <End Role="Photo" EntitySet="Photo" />
+      <End Role="ClientFeedback" EntitySet="ClientFeedback" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TeamMembe__TeamM__403A8C7D" Association="Self.FK__TeamMembe__TeamM__403A8C7D">
+      <End Role="Photo" EntitySet="Photo" />
+      <End Role="TeamMember" EntitySet="TeamMember" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TeamMembe__TeamM__412EB0B6" Association="Self.FK__TeamMembe__TeamM__412EB0B6">
+      <End Role="Position" EntitySet="Position" />
+      <End Role="TeamMember" EntitySet="TeamMember" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

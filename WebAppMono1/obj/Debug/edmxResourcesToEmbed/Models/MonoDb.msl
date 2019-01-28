@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MonoDbModelStoreContainer" CdmEntityContainer="MonoDbEntities">
+    <EntitySetMapping Name="BlogCategories">
+      <EntityTypeMapping TypeName="MonoDbModel.BlogCategory">
+        <MappingFragment StoreEntitySet="BlogCategory">
+          <ScalarProperty Name="BlogCategoryId" ColumnName="BlogCategoryId" />
+          <ScalarProperty Name="BlogCategoryName" ColumnName="BlogCategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BlogPosts">
+      <EntityTypeMapping TypeName="MonoDbModel.BlogPost">
+        <MappingFragment StoreEntitySet="BlogPost">
+          <ScalarProperty Name="BlogPostId" ColumnName="BlogPostId" />
+          <ScalarProperty Name="BlogPostTitle" ColumnName="BlogPostTitle" />
+          <ScalarProperty Name="BlogPostBody" ColumnName="BlogPostBody" />
+          <ScalarProperty Name="BlogPostPhotoId" ColumnName="BlogPostPhotoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientFeedbacks">
+      <EntityTypeMapping TypeName="MonoDbModel.ClientFeedback">
+        <MappingFragment StoreEntitySet="ClientFeedback">
+          <ScalarProperty Name="FeedbackId" ColumnName="FeedbackId" />
+          <ScalarProperty Name="FeedbackSenderName" ColumnName="FeedbackSenderName" />
+          <ScalarProperty Name="FeedbackText" ColumnName="FeedbackText" />
+          <ScalarProperty Name="FeedbackSenderRole" ColumnName="FeedbackSenderRole" />
+          <ScalarProperty Name="FeedbackSenderPhotoId" ColumnName="FeedbackSenderPhotoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="MonoDbModel.Comment">
+        <MappingFragment StoreEntitySet="Comment">
+          <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+          <ScalarProperty Name="CommentSenderName" ColumnName="CommentSenderName" />
+          <ScalarProperty Name="CommentBody" ColumnName="CommentBody" />
+          <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Photos">
+      <EntityTypeMapping TypeName="MonoDbModel.Photo">
+        <MappingFragment StoreEntitySet="Photo">
+          <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
+          <ScalarProperty Name="PhotoId" ColumnName="PhotoId" />
+          <ScalarProperty Name="PhotoName" ColumnName="PhotoName" />
+          <ScalarProperty Name="PhotoSize" ColumnName="PhotoSize" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Positions">
+      <EntityTypeMapping TypeName="MonoDbModel.Position">
+        <MappingFragment StoreEntitySet="Position">
+          <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+          <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TeamMembers">
+      <EntityTypeMapping TypeName="MonoDbModel.TeamMember">
+        <MappingFragment StoreEntitySet="TeamMember">
+          <ScalarProperty Name="TeamMemberId" ColumnName="TeamMemberId" />
+          <ScalarProperty Name="TeamMemberName" ColumnName="TeamMemberName" />
+          <ScalarProperty Name="TeamMemberPhotoId" ColumnName="TeamMemberPhotoId" />
+          <ScalarProperty Name="TeamMemberPositionId" ColumnName="TeamMemberPositionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

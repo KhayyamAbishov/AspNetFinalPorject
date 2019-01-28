@@ -1,0 +1,34 @@
+﻿@model WebAppMono1.Models.Photo
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<div id="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.html">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Home</li>
+        </ol>
+        <!-- Page Content -->
+        @using (Html.BeginForm("Create", "Photos", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-group">
+                <label for="File">Choose File</label>
+                <input type="file" class="form-control" id="file" name="file">
+
+            </div>
+            <div class="form-group">
+
+                <input type="submit"  value="Upload">
+
+            </div>
+        }
+    </div>
+
+</div>
